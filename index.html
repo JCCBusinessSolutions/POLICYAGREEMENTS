@@ -1,0 +1,727 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Client Pulse, Warranty and Data Privacy Policy Agreement</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{ --navy:#0C447C; --gold:#C99A3B; --cream:#FDF8F0; --line:#e7dfcf; --muted:#6B7280; }
+  *{ box-sizing:border-box; }
+  body{
+    margin:0; font-family:'Inter',sans-serif; background:var(--cream); color:#222;
+    padding:32px 16px; line-height:1.65;
+  }
+  .wrap{ max-width:760px; margin:0 auto; background:#fff; border:1px solid var(--line);
+    border-radius:18px; padding:40px 36px; box-shadow:0 4px 20px rgba(0,0,0,.04); }
+  .header-row{ display:flex; align-items:flex-start; justify-content:space-between; gap:16px; }
+  .logo-badge{ width:84px; height:auto; flex-shrink:0; border-radius:8px; }
+  h1{ font-family:'Playfair Display',serif; color:var(--navy); font-size:26px; margin:0 0 4px; }
+  .subtitle{ color:var(--gold); font-weight:700; font-size:14px; letter-spacing:.5px;
+    text-transform:uppercase; margin-bottom:24px; }
+  .meta{ font-size:13px; color:var(--muted); margin-bottom:28px; padding-bottom:20px;
+    border-bottom:1px solid var(--line); }
+  h2{ font-family:'Playfair Display',serif; color:var(--navy); font-size:18px;
+    margin:28px 0 10px; }
+  .section-divider{ font-family:'Playfair Display',serif; color:var(--navy); background:var(--cream);
+    font-size:19px; font-weight:700; padding:12px 16px; border-radius:8px; margin:36px 0 18px;
+    border-bottom:3px solid var(--gold); -webkit-print-color-adjust:exact; print-color-adjust:exact; }
+  p{ font-size:14px; color:#333; margin:0 0 10px; }
+  ol, ul{ font-size:14px; color:#333; padding-left:22px; margin:0 0 10px; }
+  li{ margin-bottom:8px; }
+  .callout{ background:var(--cream); border-left:4px solid var(--gold); border-radius:8px;
+    padding:14px 16px; font-size:13px; color:var(--navy); margin:18px 0; }
+  .key-point{ background:#EAF4EC; border-left:4px solid #27AE60; border-radius:8px;
+    padding:14px 16px; font-size:13px; color:#1E6B3A; margin:18px 0; }
+  .no-cover{ background:#FDECEC; border-left:4px solid #C0392B; border-radius:8px;
+    padding:14px 16px; font-size:13px; color:#7B241C; margin:18px 0; }
+  .footer{ margin-top:32px; padding-top:20px; border-top:1px solid var(--line);
+    font-size:12px; color:var(--muted); text-align:center; }
+
+  /* Top acknowledgment form */
+  .form-card{ background:var(--cream); border:1px solid var(--line); border-radius:12px;
+    padding:18px; margin:20px 0; }
+  .form-row{ display:flex; gap:16px; flex-wrap:wrap; margin-bottom:4px; }
+  .form-field{ flex:1; min-width:180px; }
+  .form-field label{ display:block; font-size:12px; font-weight:700; color:var(--navy);
+    margin-bottom:6px; text-transform:uppercase; letter-spacing:.3px; }
+  .form-field input{ width:100%; padding:10px 12px; border:1px solid #ddd; border-radius:8px;
+    font-size:14px; font-family:inherit; background:#fff; }
+
+  /* Print button */
+  .print-buttons{ margin:20px 0 8px; }
+  .print-btn{ width:100%; border:none; border-radius:10px; padding:14px 16px;
+    font-weight:700; font-size:14px; letter-spacing:.3px; cursor:pointer; color:#fff;
+    background:var(--navy); }
+
+  /* E-sign block */
+  .sign-card{ background:var(--cream); border:1px solid var(--line); border-radius:12px;
+    padding:20px; margin-top:20px; }
+  .sign-card h2{ margin-top:0; }
+  .readonly-field{ width:100%; padding:10px 12px; border:1px solid #ddd; border-radius:8px;
+    font-size:14px; font-family:inherit; background:#EFEFEF; color:#555; }
+  .sig-mode-row{ display:flex; gap:8px; margin-bottom:10px; }
+  .sig-mode-btn{ border:1px solid var(--navy); background:#fff; color:var(--navy);
+    border-radius:8px; padding:8px 14px; font-size:12px; font-weight:700; cursor:pointer; }
+  .sig-mode-btn.active{ background:var(--navy); color:#fff; }
+  #sigCanvas{ border:1px solid #ccc; border-radius:8px; background:#fff; width:100%;
+    max-width:500px; height:150px; touch-action:none; display:block; }
+  .clear-sig-btn{ margin-top:8px; background:none; border:1px solid #ccc; border-radius:8px;
+    padding:7px 14px; font-size:12px; color:#555; cursor:pointer; }
+  #sigUploadPreview{ max-width:100%; max-height:150px; display:none; margin-top:8px;
+    border:1px solid #ccc; border-radius:8px; background:#fff; }
+
+  .no-print{ }
+  @media print{
+    @page{ size: A4; margin: 15mm; }
+    body{ background:#fff; padding:0; }
+    .wrap{ border:none; border-radius:0; box-shadow:none; padding:0; max-width:100%; }
+    .no-print{ display:none !important; }
+    /* Forces Data Privacy Policy to always start on a fresh page, so the
+       printed/PDF copy comes out as Warranty first, Privacy second,
+       regardless of how long either section runs. */
+    #privacySection{ page-break-before: always; break-before: page; }
+  }
+  /* Used only while html2pdf is capturing a snapshot to email; hides
+     buttons/inputs from that snapshot without touching the real @media print rules. */
+  body.capturing-pdf .no-print{ display:none !important; }
+
+  @media (max-width:600px){
+    .wrap{ padding:28px 20px; } h1{ font-size:22px; } .logo-badge{ width:56px; }
+    .form-row{ flex-direction:column; }
+  }
+</style>
+
+<!-- html2pdf.js: generates a PDF snapshot in-browser, used only for emailing a
+     copy to JCC. The visible PRINT button still uses the browser's native
+     print dialog separately for the Advisor's own local copy. -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"
+  integrity="sha512-GsLlZN/3F2ErC5ifS5QtgpiJtWd43JWSuIgh7mbzZ8zBps+dvLusV+eNQATqgA/HdeKFVgA5v3S/cIrLF7QnIg=="
+  crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
+</head>
+<body>
+<div class="wrap">
+
+  <div class="header-row">
+    <div>
+      <h1>Policy Agreement</h1>
+      <div class="subtitle">Client Pulse, by JCC Business Solutions</div>
+    </div>
+    <img class="logo-badge" alt="Client Pulse logo" src="data:image/png;base64,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">
+  </div>
+
+  <div class="meta">
+    This page contains the 15-Day Limited Warranty and the Data Privacy Policy that apply
+    to the Advisor's use of Client Pulse. Please fill in the fields below, review both
+    policies, and sign at the bottom to confirm you have read and agree to them.
+  </div>
+
+  <div class="form-card no-print">
+    <div class="form-row">
+      <div class="form-field">
+        <label for="topDate">Date</label>
+        <input type="date" id="topDate">
+      </div>
+      <div class="form-field">
+        <label for="advisorName">Name of Advisor</label>
+        <input type="text" id="advisorName" placeholder="Enter your complete name">
+      </div>
+    </div>
+  </div>
+
+  <div class="print-buttons no-print">
+    <button type="button" class="print-btn" id="printMyPdfBtn">PRINT MY PDF COPY</button>
+  </div>
+  <div class="no-print" id="emailStatus" style="font-size:12px;margin-bottom:14px;display:none;"></div>
+
+  <div id="warrantySection">
+    <div class="section-divider">Part 1: 15-Day Limited Warranty</div>
+<div class="meta">
+    Applies to one-time purchases of JCC Business Solutions digital tools (₱999 each),
+    including the Proposal Summarizer, Client Pulse, and any current or future app sold
+    on a one-time basis. <br>Effective Date: <strong id="warrantyEffectiveDate">[will match the Date Signed below]</strong>
+  </div>
+
+  <h2>1. Overview</h2>
+  <p>
+    JCC Business Solutions ("JCC," "we," "us") provides a 15-calendar-day limited warranty
+    on each one-time purchase of its digital tools (the "App"). Under this warranty, JCC's
+    first commitment is to <strong>fix confirmed software defects ("Bugs") free of charge</strong>.
+    If, after a genuine good-faith attempt, a confirmed Bug cannot reasonably be fixed, the
+    Buyer becomes eligible for a <strong>full refund</strong> of the purchase price for that
+    App, subject to the exceptions in Section 5(c) below, which mainly cover situations where
+    the issue was caused by the Buyer's own changes to the Google Sheet or the App itself.
+  </p>
+
+  <h2>2. Warranty Period</h2>
+  <p>
+    The warranty period begins on the date the App (or access to it) is delivered to the
+    Buyer, whether by file transfer, shared link, or successful first setup, and ends
+    fifteen (15) calendar days after that date. The Buyer must <strong>report</strong> the
+    issue within this 15-day period for it to be covered. Once a report is timely received,
+    JCC will continue working toward a resolution (fix, or refund if unfixable) even if that
+    process extends a few days beyond the 15-day window. Requests first reported after the
+    15-day period are not covered, though JCC may, at its sole discretion, still choose to
+    assist.
+  </p>
+
+  <h2>3. What Is Covered</h2>
+  <p>During the warranty period, JCC will investigate and, where confirmed, correct at no cost any Bug that:</p>
+  <ol>
+    <li>Causes a core, advertised feature of the App to fail to work as demonstrated or described at the time of purchase;</li>
+    <li>Is reproducible by JCC using the App in its standard, supported configuration (hosted on GitHub Pages or an equivalent static host, connected to a correctly configured Google Sheets + Apps Script backend matching the setup guide provided); and</li>
+    <li>Is reported by the Buyer with enough detail (see Section 6) for JCC to identify and reproduce the issue.</li>
+  </ol>
+
+  <div class="callout">
+    <strong>In short:</strong> if a feature that was working at delivery breaks due to an
+    error in JCC's code, that's covered. If it's something the Buyer's setup, sheet, or
+    third-party service is doing, that's outside this warranty.
+  </div>
+
+  <h2>4. What Is Not Covered</h2>
+  <p>This warranty does not cover the items below, and they are not eligible for either a free fix or a refund:</p>
+  <div class="no-cover">
+    <ul style="margin:0;">
+      <li>Issues caused by the Buyer's own configuration, such as incorrect Apps Script deployment settings, mismatched or renamed Google Sheet column headers, missing sheet permissions, or expired or revoked Google account access;</li>
+      <li>Changes, outages, or policy updates made by third-party platforms outside JCC's control (Google Sheets, Google Apps Script, GitHub Pages, EmailJS, the Buyer's browser, etc.);</li>
+      <li>Modifications made to the App's source code by the Buyer or any third party after delivery;</li>
+      <li>New feature requests, design changes, or enhancements not part of the App's advertised functionality at the time of purchase. These are not Bugs;</li>
+      <li>Compatibility issues from unsupported browsers or devices (supported: current Chrome, Safari, and Edge, desktop and mobile);</li>
+      <li>Data loss or formatting issues originating from the Buyer's own Google Sheet (deleted rows, changed headers, manual edits);</li>
+      <li>Problems caused by the Buyer's internet connection, device, or hosting account; or</li>
+      <li>Unauthorized resale, redistribution, or use of the App beyond the single-buyer license granted at purchase.</li>
+    </ul>
+  </div>
+
+  <h2>5. Remedy</h2>
+
+  <p><strong>(a) Primary Remedy: Repair.</strong> JCC's first obligation under this warranty
+  is to use commercially reasonable, good-faith efforts to fix confirmed Bugs (as defined in
+  Section 3) and deliver a corrected version of the App to the Buyer within a reasonable
+  time, generally within five (5) to seven (7) business days of confirming the defect,
+  depending on complexity.</p>
+
+  <p><strong>(b) Fallback Remedy: Refund for Unfixable Defects.</strong> If, after a genuine
+  good-faith effort, JCC determines that a confirmed Bug cannot reasonably be resolved, the
+  Buyer is entitled to a full refund of the purchase price paid for that App, provided none
+  of the exceptions in Section 5(c) apply.</p>
+
+  <div class="callout">
+    <strong>In short:</strong> JCC will always try to fix a genuine Bug first. If it truly
+    can't be fixed, the Buyer gets their money back, unless the reason it can't be fixed
+    traces back to changes the Buyer (or someone on the Buyer's behalf) made to the Google
+    Sheet or the App itself.
+  </div>
+
+  <p><strong>(c) Exceptions: When the Refund in Section 5(b) Does Not Apply.</strong>
+  The Buyer is not entitled to a refund under Section 5(b) if the unresolved issue is caused
+  by, or traceable to, any of the following:</p>
+  <div class="no-cover">
+    <ul style="margin:0;">
+      <li>Any modification, alteration, or customization the Buyer (or a third party on the Buyer's behalf) made to the Google Sheet(s) used by the App, including renamed or deleted columns, changed headers, altered formulas, or restructured tabs;</li>
+      <li>Any modification, alteration, or customization the Buyer (or a third party on the Buyer's behalf) made to the App's source code or files after delivery; or</li>
+      <li>Any of the circumstances already listed in Section 4 (e.g., third-party platform changes, unsupported browsers, the Buyer's own configuration errors, internet or device issues). Since these do not qualify as a confirmed Bug in the first place, they are not eligible for a fix or a refund under this warranty.</li>
+    </ul>
+  </div>
+  <p>
+    In these cases, JCC may still choose, at its sole discretion, to assist the Buyer.
+    For example, JCC may offer guidance on restoring the original Sheet structure, but is
+    under no obligation to do so.
+  </p>
+
+  <p><strong>(d) How a Refund Is Processed.</strong> Where a refund applies under Section
+  5(b), JCC will process it to the original payment method or channel used by the Buyer
+  within a reasonable time after confirming the defect is unfixable. JCC reserves the right
+  to request that the Buyer confirm removal or discontinued use of the App as a condition
+  of the refund.</p>
+
+  <h2>6. How to Request Warranty Support</h2>
+  <p>To request a warranty fix (and, if applicable, a refund under Section 5(b)), the Buyer must, within the 15-day period:</p>
+  <ol>
+    <li>Contact JCC through <strong>jccbusinesssolutions@gmail.com</strong>;</li>
+    <li>Provide proof of purchase (invoice number, receipt, or payment confirmation);</li>
+    <li>Describe the issue in detail, including the steps to reproduce it; and</li>
+    <li>If possible, provide a screenshot or screen recording of the issue.</li>
+  </ol>
+
+  <h2>7. Limitation of Liability</h2>
+  <p>
+    To the fullest extent permitted by law, JCC's total liability for any claim relating to
+    the App, whether under this warranty, contract, or otherwise, is limited to the
+    purchase price actually paid by the Buyer for that App. JCC is not liable for indirect,
+    incidental, consequential, or special damages, including lost income, lost data, or
+    business interruption.
+  </p>
+
+  <h2>8. Single License, No Resale</h2>
+  <p>
+    The App is licensed for use by the individual or business that purchased it. This
+    warranty is personal to the original Buyer and does not transfer if the App is resold,
+    shared, or distributed to a third party.
+  </p>
+
+  <h2>9. Changes to This Policy</h2>
+  <p>
+    JCC may update this warranty policy for future purchases. Changes will not apply
+    retroactively to purchases already made before the update.
+  </p>
+
+  <h2>10. Governing Law</h2>
+  <p>
+    This warranty is governed by the laws of the Republic of the Philippines. Nothing in
+    this policy is intended to waive any right that cannot be waived under Philippine law,
+    including applicable provisions of the Civil Code and the Consumer Act of the
+    Philippines (Republic Act No. 7394), to the extent such laws apply to the transaction.
+  </p>
+  </div>
+
+  <div id="privacySection">
+    <div class="section-divider">Part 2: Data Privacy Policy</div>
+<div class="meta">
+    This policy explains how personal data is handled when an Advisor uses the Client Pulse
+    app, and what role JCC Business Solutions does and does not play in that handling.
+    It is written to align with the Data Privacy Act of 2012 (Republic Act No. 10173), its
+    Implementing Rules and Regulations, and issuances of the National Privacy Commission.
+    <br>Effective Date: <strong id="privacyEffectiveDate">[will match the Date Signed below]</strong>
+  </div>
+
+  <h2>1. Who This Policy Is For</h2>
+  <p>
+    Client Pulse is a tool built by JCC Business Solutions ("JCC," "we," "us") and licensed
+    to financial advisors ("Advisor," "you") for managing premium due reminders and birthday
+    greetings for the Advisor's own clients. This policy applies to every Advisor who uses
+    Client Pulse, and describes how the personal data of the Advisor's clients ("Client
+    Data") is handled within the app.
+  </p>
+
+  <h2>2. Roles Under the Data Privacy Act</h2>
+  <p>
+    Under Republic Act No. 10173, there is an important distinction between a Personal
+    Information Controller (the party who decides what personal data to collect and how it
+    will be used) and a Personal Information Processor (a party that processes data on
+    behalf of and under the instructions of a controller). Here is how those roles apply to
+    Client Pulse:
+  </p>
+  <ul>
+    <li>
+      <strong>The Advisor is the Personal Information Controller.</strong> The Advisor
+      decides which clients to add, what client information to store, and how reminders are
+      sent. The Advisor is responsible for obtaining proper consent from their clients and
+      for complying with the Data Privacy Act with respect to their own client
+      relationships.
+    </li>
+    <li>
+      <strong>JCC Business Solutions is the software provider, not a controller or
+      processor of Client Data.</strong> JCC built and licensed the Client Pulse software,
+      but does not collect, store, view, or process the Advisor's Client Data in the course
+      of the app's normal operation. Section 3 explains why.
+    </li>
+  </ul>
+
+  <h2>3. How Client Pulse Actually Handles Data</h2>
+  <p>This is the part most Advisors want to understand clearly, so here it is in plain terms:</p>
+  <ol>
+    <li>Client Pulse runs as a self-contained web app inside the Advisor's own browser.</li>
+    <li>When an Advisor sets up Client Pulse, they connect it to their own Google Sheets, which they create and control, using their own Google account.</li>
+    <li>The Advisor also deploys their own Google Apps Script (a small backend program) under their own Google account. This is what actually stores and retrieves Client Data such as names, policy numbers, premium amounts, due dates, contact numbers, and birthdays.</li>
+    <li>When the Advisor uses Client Pulse, their browser talks directly to their own Google Apps Script and their own Google Sheets. Client Data flows only between those two points, both of which belong to and are controlled by the Advisor.</li>
+  </ol>
+
+  <div class="key-point">
+    <strong>The key point:</strong> JCC Business Solutions does not own, host, or operate any
+    server that Client Data passes through. JCC has no login access, no viewing access, and
+    no copy of the Advisor's Google Sheets or Apps Script deployment. Client names, policy
+    numbers, premium amounts due, contact numbers, email addresses, and birthdates stay
+    entirely within the Advisor's own Google account unless the Advisor chooses to share
+    that information with someone else.
+  </div>
+
+  <h2>4. What JCC Does Not Collect or Access</h2>
+  <p>In the normal operation of Client Pulse, JCC and its developers do not collect, receive, view, or store any of the following:</p>
+  <ul>
+    <li>Client names</li>
+    <li>Policy numbers</li>
+    <li>Premium or amount due figures</li>
+    <li>Contact numbers, email addresses, or home addresses of the Advisor's clients</li>
+    <li>Birthdates or any other personal information belonging to the Advisor's clients</li>
+  </ul>
+  <p>None of this information passes through, is logged by, or is stored on any system operated by JCC.</p>
+
+  <h2>5. What JCC May Collect</h2>
+  <p>
+    JCC's collection of personal data is limited to information about the Advisor as a
+    buyer and user of the software, such as:
+  </p>
+  <ul>
+    <li>The Advisor's own name, email address, and contact details, used for delivering the app, invoicing, and providing support;</li>
+    <li>Payment confirmation details needed to process a purchase, such as a reference number, which the Advisor provides directly;</li>
+    <li>Communications the Advisor sends to JCC, such as support requests or feedback.</li>
+  </ul>
+
+  <h2>6. Technical Support and Incidental Access</h2>
+  <p>
+    If an Advisor voluntarily shares information with JCC to help diagnose a technical
+    issue, for example a screenshot, a sample data export, or a description that includes a
+    client's name, JCC may incidentally come across limited Client Data during that support
+    interaction. In such cases, JCC commits to the following:
+  </p>
+  <ul>
+    <li>The information will be used only to diagnose and resolve the specific issue raised;</li>
+    <li>The information will not be sold, shared with, or disclosed to any third party;</li>
+    <li>The information will not be retained longer than necessary to resolve the issue, and will be deleted upon request once the issue is resolved;</li>
+    <li>JCC will not use such information for marketing, profiling, or any purpose unrelated to the support request.</li>
+  </ul>
+  <p>
+    Advisors are encouraged to remove or mask sensitive client details (such as full policy
+    numbers) when sharing screenshots for support whenever practical.
+  </p>
+
+  <h2>7. Data Security</h2>
+  <p>
+    Because Client Data lives in the Advisor's own Google Sheets and Google Apps Script
+    deployment, the security of that data depends primarily on how the Advisor manages
+    their own Google account, including password strength, two-factor authentication, and
+    sheet sharing permissions. JCC follows reasonable secure coding practices in building
+    Client Pulse, such as requiring HTTPS connections and email-based access gating, but
+    cannot guarantee the security of the Advisor's own Google Workspace environment, device,
+    or network.
+  </p>
+
+  <h2>8. Rights of the Advisor's Clients</h2>
+  <p>
+    Because the Advisor is the Personal Information Controller for their own clients, it is
+    the Advisor's responsibility, not JCC's, to:
+  </p>
+  <ul>
+    <li>Obtain proper consent from clients before adding their information to Client Pulse or sending them automated reminders;</li>
+    <li>Honor client requests related to their rights under the Data Privacy Act, including the right to be informed, the right to access, the right to correct, the right to object, and the right to erasure or blocking;</li>
+    <li>Respond to any privacy complaint or inquiry a client raises about how their data is being used.</li>
+  </ul>
+  <p>
+    Since JCC has no access to the underlying Client Data, JCC is not in a position to
+    fulfill these requests directly. Any such request should be directed to the Advisor who
+    manages that client's information.
+  </p>
+
+  <h2>9. Data Retention</h2>
+  <p>
+    JCC does not retain Client Data, since it does not receive or store it in the first
+    place. How long Client Data is kept within the Advisor's own Google Sheets is governed
+    entirely by the Advisor's own retention practices and policies.
+  </p>
+
+  <h2>10. Third-Party Services Involved</h2>
+  <p>Client Pulse relies on a small number of third-party platforms to function. These are services the Advisor sets up and controls under their own account, not services operated by JCC:</p>
+  <ul>
+    <li><strong>Google Sheets and Google Apps Script</strong>, under the Advisor's own Google account, used to store and process Client Data;</li>
+    <li><strong>GitHub Pages or an equivalent static hosting service</strong>, used only to serve the Client Pulse app file itself, which does not store or process Client Data;</li>
+    <li>
+      If the Advisor's setup uses any email or messaging service to deliver notifications
+      or access codes, that service may process limited contact information, such as an
+      email address, solely to deliver that message.
+    </li>
+  </ul>
+  <p>
+    Because Google's infrastructure operates globally, Client Data stored in the Advisor's
+    Google Sheets may be processed or stored on servers located outside the Philippines, as
+    part of Google's standard service infrastructure. This is a function of the Advisor's
+    choice to use Google Workspace, not something JCC controls.
+  </p>
+
+  <h2>11. Children's Data</h2>
+  <p>
+    Client Pulse is intended for managing the Advisor's adult clients in connection with
+    financial products and services. It is not intended for the collection of personal data
+    belonging to minors, and Advisors should avoid entering such data into the app.
+  </p>
+
+  <h2>12. Changes to This Policy</h2>
+  <p>
+    JCC may update this policy from time to time to reflect changes in the app, in
+    applicable law, or in National Privacy Commission guidance. Material changes will be
+    reflected by an updated effective date at the top of this document.
+  </p>
+
+  <h2>13. Governing Law</h2>
+  <p>
+    This policy is governed by the laws of the Republic of the Philippines, including the
+    Data Privacy Act of 2012 (Republic Act No. 10173), its Implementing Rules and
+    Regulations, and applicable issuances of the National Privacy Commission.
+  </p>
+
+  <h2>14. Contact</h2>
+  <p>
+    Questions about Client Pulse as software, or about this policy, may be sent to
+    <strong>jccbusinesssolutions@gmail.com</strong>. Questions or concerns about how a
+    specific Advisor is handling a client's personal data should be directed to that
+    Advisor, since the Advisor is the party responsible for that client's information under
+    the Data Privacy Act.
+  </p>
+  </div>
+
+  <div class="sign-card" id="signSection">
+    <h2>Acknowledgment and E-Signature</h2>
+    <p>
+      By signing below, the Advisor named above confirms they have read and agree to both
+      the 15-Day Limited Warranty and the Data Privacy Policy on this page.
+    </p>
+
+    <div class="form-row" style="margin-top:14px;">
+      <div class="form-field">
+        <label for="fullNameMirror">Full Name</label>
+        <input type="text" id="fullNameMirror" class="readonly-field" readonly placeholder="Auto-filled from Name of Advisor above">
+      </div>
+      <div class="form-field">
+        <label for="dateSigned">Date Signed</label>
+        <input type="date" id="dateSigned">
+      </div>
+    </div>
+
+    <div style="margin-top:16px;">
+      <label style="display:block;font-size:12px;font-weight:700;color:var(--navy);margin-bottom:8px;text-transform:uppercase;letter-spacing:.3px;">E-Signature</label>
+
+      <div class="sig-mode-row no-print">
+        <button type="button" class="sig-mode-btn active" id="modeDrawBtn">Draw Signature</button>
+        <button type="button" class="sig-mode-btn" id="modeUploadBtn">Upload Signature Image</button>
+      </div>
+
+      <div id="sigDrawWrap">
+        <canvas id="sigCanvas" width="500" height="150"></canvas>
+        <button type="button" class="clear-sig-btn no-print" id="clearSigBtn">Clear Signature</button>
+      </div>
+
+      <div id="sigUploadWrap" style="display:none;">
+        <input type="file" id="sigUploadInput" accept="image/*" class="no-print">
+        <img id="sigUploadPreview" alt="Uploaded signature">
+      </div>
+    </div>
+  </div>
+
+  <div class="footer">
+    JCC Business Solutions, Intellectual Property of Jaymar Castro, CPA, CIS, CEP<br>
+    This document is a business policy template, not a substitute for independent legal advice.
+  </div>
+
+</div>
+
+<script>
+  // Mirror the Advisor name typed at the top into the read-only Full Name field below.
+  const advisorNameInput = document.getElementById('advisorName');
+  const fullNameMirror = document.getElementById('fullNameMirror');
+  advisorNameInput.addEventListener('input', function(){
+    fullNameMirror.value = advisorNameInput.value;
+  });
+
+  // The Effective Date on both policies should always match whatever the
+  // Advisor enters as the Date Signed below, formatted in plain English
+  // rather than the raw yyyy-mm-dd value from the date input.
+  const dateSignedInput = document.getElementById('dateSigned');
+  const warrantyEffectiveDate = document.getElementById('warrantyEffectiveDate');
+  const privacyEffectiveDate = document.getElementById('privacyEffectiveDate');
+  const MONTH_NAMES = ['January','February','March','April','May','June','July','August','September','October','November','December'];
+
+  function formatSignedDate(value){
+    if (!value) return '[will match the Date Signed below]';
+    const parts = value.split('-');
+    if (parts.length !== 3) return value;
+    const year = parts[0];
+    const monthIndex = parseInt(parts[1], 10) - 1;
+    const day = parseInt(parts[2], 10);
+    if (isNaN(monthIndex) || monthIndex < 0 || monthIndex > 11 || isNaN(day)) return value;
+    return MONTH_NAMES[monthIndex] + ' ' + day + ', ' + year;
+  }
+
+  function syncEffectiveDate(){
+    const formatted = formatSignedDate(dateSignedInput.value);
+    warrantyEffectiveDate.textContent = formatted;
+    privacyEffectiveDate.textContent = formatted;
+  }
+  dateSignedInput.addEventListener('input', syncEffectiveDate);
+  syncEffectiveDate();
+
+  // ============================================================
+  // APPS SCRIPT CONFIGURATION. This reuses the same Web App URL deployed
+  // earlier. Make sure the .gs code running at that URL matches
+  // JCC_POLICY_AGREEMENT_APPSCRIPT.gs (internal-notification version),
+  // since the recipient logic now lives entirely server-side.
+  // ============================================================
+  const POLICY_AGREEMENT_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbxo5SuJgKRpBEcxsYCdtWhYCo6XaMq9Mozm2dXtW25pL-jyHadQYDPrXRpMBZRV6y3E/exec';
+  const JCC_NOTIFY_EMAIL = 'jccbusinesssolutions16@gmail.com';
+
+  const emailStatusEl = document.getElementById('emailStatus');
+  function showEmailStatus(message, color){
+    emailStatusEl.textContent = message;
+    emailStatusEl.style.color = color;
+    emailStatusEl.style.display = 'block';
+  }
+
+  // Converts a Blob (the generated PDF) into a plain base64 string to send
+  // up to Apps Script, which decodes it back into a real PDF attachment.
+  function blobToBase64(blob){
+    return new Promise((resolve, reject) => {
+      const reader = new FileReader();
+      reader.onloadend = () => resolve(reader.result.split(',')[1]);
+      reader.onerror = reject;
+      reader.readAsDataURL(blob);
+    });
+  }
+
+  // Generates one combined PDF of the whole page (both policies, the top
+  // form, and the signature block), exactly matching what the print
+  // dialog will show, then sends it to Apps Script, which emails it from
+  // your own Gmail account to JCC_NOTIFY_EMAIL. This does NOT use the
+  // browser's print dialog itself, since JavaScript has no access to
+  // whatever a user saves from that dialog; this is a separate, real PDF
+  // built in memory instead.
+  async function generateAndEmailPDF(){
+    if (typeof html2pdf === 'undefined'){
+      showEmailStatus('Email step skipped: html2pdf.js did not load. Check your internet connection.', '#C0392B');
+      return;
+    }
+    if (POLICY_AGREEMENT_SCRIPT_URL.indexOf('PASTE_YOUR_APPS_SCRIPT') === 0){
+      showEmailStatus('Email step skipped: paste your Apps Script Web App URL into POLICY_AGREEMENT_SCRIPT_URL first.', '#C0392B');
+      return;
+    }
+    if (!advisorNameInput.value.trim() || !dateSignedInput.value){
+      showEmailStatus('Please fill in Name of Advisor and Date Signed before printing.', '#C0392B');
+      return;
+    }
+
+    showEmailStatus('Generating PDF and emailing a copy to JCC Business Solutions…', '#0C447C');
+    document.body.classList.add('capturing-pdf');
+
+    const opt = {
+      margin: 8,
+      image: { type: 'jpeg', quality: 0.7 },
+      html2canvas: { scale: 1.2, useCORS: true },
+      jsPDF: { unit: 'mm', format: 'a4', orientation: 'portrait' },
+      // Honors the same #privacySection page-break-before CSS rule used
+      // for the native print, so the emailed PDF also lands Warranty
+      // first, Privacy starting fresh on its own page.
+      pagebreak: { mode: ['css'] }
+    };
+
+    try {
+      const blob = await html2pdf().set(opt).from(document.querySelector('.wrap')).outputPdf('blob');
+      const base64 = await blobToBase64(blob);
+
+      // text/plain avoids a CORS preflight that Apps Script Web Apps don't
+      // handle; doPost() still reads the raw JSON body fine either way.
+      const res = await fetch(POLICY_AGREEMENT_SCRIPT_URL, {
+        method: 'POST',
+        headers: { 'Content-Type': 'text/plain;charset=utf-8' },
+        body: JSON.stringify({
+          action: 'sendSignedPolicy',
+          advisorName: advisorNameInput.value.trim(),
+          dateSigned: formatSignedDate(dateSignedInput.value),
+          pdfBase64: base64
+        })
+      });
+      const data = await res.json();
+
+      if (data.success) {
+        showEmailStatus('Emailed the complete signed copy to ' + JCC_NOTIFY_EMAIL + '.', '#27AE60');
+      } else {
+        showEmailStatus('Could not email the PDF. ' + (data.error || 'Check your Apps Script deployment.'), '#C0392B');
+      }
+    } catch (err) {
+      console.error('Apps Script send failed:', err);
+      showEmailStatus('Could not email the PDF. Check your Apps Script deployment and internet connection.', '#C0392B');
+    } finally {
+      document.body.classList.remove('capturing-pdf');
+    }
+  }
+
+  // Clicking the button does both jobs in sequence: email a copy to JCC
+  // first, then open the local print dialog for the Advisor's own copy.
+  // They run one after another, not at the same time, so they don't fight
+  // over the same body classes used during PDF capture.
+  document.getElementById('printMyPdfBtn').addEventListener('click', async function(){
+    await generateAndEmailPDF();
+    window.print();
+  });
+
+  // Signature pad: draw with mouse or finger.
+  const canvas = document.getElementById('sigCanvas');
+  const ctx = canvas.getContext('2d');
+  ctx.strokeStyle = '#0C447C';
+  ctx.lineWidth = 2;
+  ctx.lineCap = 'round';
+  let drawing = false;
+  let lastX = 0, lastY = 0;
+
+  function getPos(e){
+    const rect = canvas.getBoundingClientRect();
+    const scaleX = canvas.width / rect.width;
+    const scaleY = canvas.height / rect.height;
+    if (e.touches && e.touches.length){
+      return { x: (e.touches[0].clientX - rect.left) * scaleX, y: (e.touches[0].clientY - rect.top) * scaleY };
+    }
+    return { x: (e.clientX - rect.left) * scaleX, y: (e.clientY - rect.top) * scaleY };
+  }
+  function startDraw(e){
+    drawing = true;
+    const pos = getPos(e);
+    lastX = pos.x; lastY = pos.y;
+    e.preventDefault();
+  }
+  function draw(e){
+    if (!drawing) return;
+    const pos = getPos(e);
+    ctx.beginPath();
+    ctx.moveTo(lastX, lastY);
+    ctx.lineTo(pos.x, pos.y);
+    ctx.stroke();
+    lastX = pos.x; lastY = pos.y;
+    e.preventDefault();
+  }
+  function endDraw(){ drawing = false; }
+
+  canvas.addEventListener('mousedown', startDraw);
+  canvas.addEventListener('mousemove', draw);
+  canvas.addEventListener('mouseup', endDraw);
+  canvas.addEventListener('mouseleave', endDraw);
+  canvas.addEventListener('touchstart', startDraw, { passive: false });
+  canvas.addEventListener('touchmove', draw, { passive: false });
+  canvas.addEventListener('touchend', endDraw);
+
+  document.getElementById('clearSigBtn').addEventListener('click', function(){
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+  });
+
+  // Toggle between drawing a signature and uploading an image of one.
+  const modeDrawBtn = document.getElementById('modeDrawBtn');
+  const modeUploadBtn = document.getElementById('modeUploadBtn');
+  const sigDrawWrap = document.getElementById('sigDrawWrap');
+  const sigUploadWrap = document.getElementById('sigUploadWrap');
+
+  modeDrawBtn.addEventListener('click', function(){
+    modeDrawBtn.classList.add('active');
+    modeUploadBtn.classList.remove('active');
+    sigDrawWrap.style.display = 'block';
+    sigUploadWrap.style.display = 'none';
+  });
+  modeUploadBtn.addEventListener('click', function(){
+    modeUploadBtn.classList.add('active');
+    modeDrawBtn.classList.remove('active');
+    sigUploadWrap.style.display = 'block';
+    sigDrawWrap.style.display = 'none';
+  });
+
+  document.getElementById('sigUploadInput').addEventListener('change', function(e){
+    const file = e.target.files[0];
+    if (!file) return;
+    const reader = new FileReader();
+    reader.onload = function(ev){
+      const img = document.getElementById('sigUploadPreview');
+      img.src = ev.target.result;
+      img.style.display = 'block';
+    };
+    reader.readAsDataURL(file);
+  });
+</script>
+</body>
+</html>
